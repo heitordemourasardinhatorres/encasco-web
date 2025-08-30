@@ -72,34 +72,6 @@ encasco-web/
 - **Font Awesome**: Ícones profissionais
 - **Google Fonts**: Tipografia Inter
 
-## 🚀 Como Executar
-
-1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/seu-usuario/encasco-web.git
-   cd encasco-web
-   ```
-
-2. **Abra o arquivo index.html** no seu navegador ou use um servidor local:
-   ```bash
-   # Usando Python
-   python -m http.server 8000
-   
-   # Usando Node.js
-   npx serve .
-   
-   # Usando PHP
-   php -S localhost:8000
-   ```
-
-3. **Acesse** `http://localhost:8000` no seu navegador
-
-## 📱 Responsividade
-
-O website é totalmente responsivo e otimizado para:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
 
 ## 🎯 Funcionalidades JavaScript
 
@@ -152,13 +124,6 @@ Edite as variáveis CSS no arquivo `styles.css`:
 - CSS e JavaScript minificados (recomendado para produção)
 - Carregamento assíncrono de recursos
 
-## 🤝 Contribuição
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
 
 ## 📄 Licença
 
@@ -166,10 +131,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## 👥 Equipe
 
-- **Desenvolvimento**: [Seu Nome]
-- **Design**: [Designer]
-- **Conteúdo**: [Copywriter]
-
+- **Desenvolvimento**: Heitor de Moura
 ---
 
 © 2025 Encasco - Todos os direitos reservados.
