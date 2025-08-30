@@ -601,6 +601,79 @@ p {
     font-size: 0.9rem;
 }
 
+/* Specifications Section */
+.specifications {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.spec-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spec-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.spec-card h3 {
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 0.5rem;
+}
+
+.spec-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.spec-card li {
+    padding: 0.5rem 0;
+    color: #64748b;
+    position: relative;
+    padding-left: 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.spec-card li:last-child {
+    border-bottom: none;
+}
+
+.spec-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.spec-card strong {
+    color: #1e293b;
+}
+
+.spec-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #0369a1;
+}
+
 /* Contact Section */
 .contact {
     padding: 80px 0;
@@ -934,11 +1007,17 @@ p {
         gap: 1.5rem;
     }
     
-    /* Contact Section */
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+         /* Specifications Section */
+     .specs-grid {
+         grid-template-columns: 1fr;
+         gap: 1.5rem;
+     }
+     
+     /* Contact Section */
+     .contact-content {
+         grid-template-columns: 1fr;
+         gap: 2rem;
+     }
     
     /* Footer */
     .footer-content {
