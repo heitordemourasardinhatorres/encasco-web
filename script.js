@@ -27,26 +27,26 @@ document.querySelectorAll('a[href^="#"]').forEach(ancora => {
 // Manipulação do formulário de contato
 const formularioContato = document.getElementById('formularioContato');
 if (formularioContato) {
-    formularioContato.addEventListener('submit', function(e) {
+    formularioContato.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         // Obter dados do formulário
         const dadosFormulario = new FormData(this);
         const nome = dadosFormulario.get('nome');
         const email = dadosFormulario.get('email');
         const mensagem = dadosFormulario.get('mensagem');
-        
+
         // Validação simples
         if (!nome || !email || !mensagem) {
             mostrarNotificacao('Por favor, preencha todos os campos.', 'erro');
             return;
         }
-        
+
         if (!validarEmail(email)) {
             mostrarNotificacao('Por favor, insira um e-mail válido.', 'erro');
             return;
         }
-        
+
         // Simular envio do formulário
         mostrarNotificacao('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'sucesso');
         this.reset();
@@ -66,7 +66,7 @@ function mostrarNotificacao(mensagem, tipo = 'info') {
     if (notificacaoExistente) {
         notificacaoExistente.remove();
     }
-    
+
     // Criar elemento de notificação
     const notificacao = document.createElement('div');
     notificacao.className = `notificacao notificacao-${tipo}`;
@@ -76,7 +76,7 @@ function mostrarNotificacao(mensagem, tipo = 'info') {
             <button class="fechar-notificacao">&times;</button>
         </div>
     `;
-    
+
     // Adicionar estilos
     notificacao.style.cssText = `
         position: fixed;
@@ -92,15 +92,15 @@ function mostrarNotificacao(mensagem, tipo = 'info') {
         transition: transform 0.3s ease;
         max-width: 400px;
     `;
-    
+
     // Adicionar à página
     document.body.appendChild(notificacao);
-    
+
     // Animar entrada
     setTimeout(() => {
         notificacao.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Funcionalidade do botão fechar
     const botaoFechar = notificacao.querySelector('.fechar-notificacao');
     botaoFechar.addEventListener('click', () => {
@@ -109,7 +109,7 @@ function mostrarNotificacao(mensagem, tipo = 'info') {
             notificacao.remove();
         }, 300);
     });
-    
+
     // Remover automaticamente após 5 segundos
     setTimeout(() => {
         if (notificacao.parentNode) {
@@ -139,7 +139,7 @@ const observador = new IntersectionObserver((entradas) => {
 // Observar elementos para animação
 document.addEventListener('DOMContentLoaded', () => {
     const elementosAnimados = document.querySelectorAll('.card-servico, .card-aplicacao, .card-testemunho, .item-valor, .item-beneficio');
-    
+
     elementosAnimados.forEach(elemento => {
         elemento.style.opacity = '0';
         elemento.style.transform = 'translateY(30px)';
@@ -150,14 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Efeitos de clique nos botões
 document.querySelectorAll('.btn').forEach(botao => {
-    botao.addEventListener('click', function(e) {
+    botao.addEventListener('click', function (e) {
         // Criar efeito de ondulação
         const ondulacao = document.createElement('span');
         const retangulo = this.getBoundingClientRect();
         const tamanho = Math.max(retangulo.width, retangulo.height);
         const x = e.clientX - retangulo.left - tamanho / 2;
         const y = e.clientY - retangulo.top - tamanho / 2;
-        
+
         ondulacao.style.cssText = `
             position: absolute;
             width: ${tamanho}px;
@@ -170,11 +170,11 @@ document.querySelectorAll('.btn').forEach(botao => {
             animation: ondulacao 0.6s linear;
             pointer-events: none;
         `;
-        
+
         this.style.position = 'relative';
         this.style.overflow = 'hidden';
         this.appendChild(ondulacao);
-        
+
         setTimeout(() => {
             ondulacao.remove();
         }, 600);
@@ -193,24 +193,7 @@ estilo.textContent = `
 `;
 document.head.appendChild(estilo);
 
-// Funcionalidade dos botões do cabeçalho
-document.querySelectorAll('.botoes-cabecalho .btn').forEach(botao => {
-    botao.addEventListener('click', function() {
-        if (this.textContent.includes('Orçamento')) {
-            // Rolar para seção de contato
-            document.querySelector('#contato').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        } else if (this.textContent.includes('Falar Conosco')) {
-            // Rolar para seção de contato
-            document.querySelector('#contato').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+
 
 // Efeito parallax para seção hero
 window.addEventListener('scroll', () => {
@@ -226,7 +209,7 @@ window.addEventListener('scroll', () => {
 function animarContador(elemento, alvo, duracao = 2000) {
     let inicio = 0;
     const incremento = alvo / (duracao / 16);
-    
+
     function atualizarContador() {
         inicio += incremento;
         if (inicio < alvo) {
@@ -236,39 +219,39 @@ function animarContador(elemento, alvo, duracao = 2000) {
             elemento.textContent = alvo;
         }
     }
-    
+
     atualizarContador();
 }
 
 // Carregamento preguiçoso para imagens com efeitos visuais
 function carregarImagensPreguicosamente() {
     const imagens = document.querySelectorAll('img[data-src]');
-    
+
     // Adicionar classe inicial para efeito de carregamento
     imagens.forEach(img => {
         img.classList.add('imagem-preguicosa');
     });
-    
+
     const observadorImagem = new IntersectionObserver((entradas, observador) => {
         entradas.forEach(entrada => {
             if (entrada.isIntersecting) {
                 const img = entrada.target;
-                
+
                 // Carregar a imagem
                 img.src = img.dataset.src;
-                
+
                 // Adicionar evento para quando a imagem carregar
                 img.addEventListener('load', () => {
                     img.classList.add('carregada');
                     img.classList.remove('imagem-preguicosa');
                 });
-                
+
                 // Adicionar evento para erro de carregamento
                 img.addEventListener('error', () => {
                     img.style.display = 'none';
                     console.warn('Erro ao carregar imagem:', img.dataset.src);
                 });
-                
+
                 observadorImagem.unobserve(img);
             }
         });
@@ -276,7 +259,7 @@ function carregarImagensPreguicosamente() {
         threshold: 0.1,
         rootMargin: '50px 0px'
     });
-    
+
     imagens.forEach(img => observadorImagem.observe(img));
 }
 
@@ -287,11 +270,11 @@ document.addEventListener('DOMContentLoaded', carregarImagensPreguicosamente);
 if (formularioContato) {
     const botaoEnviar = formularioContato.querySelector('button[type="submit"]');
     const textoOriginal = botaoEnviar.textContent;
-    
-    formularioContato.addEventListener('submit', function() {
+
+    formularioContato.addEventListener('submit', function () {
         botaoEnviar.textContent = 'Enviando...';
         botaoEnviar.disabled = true;
-        
+
         // Simular chamada de API
         setTimeout(() => {
             botaoEnviar.textContent = textoOriginal;
@@ -302,11 +285,11 @@ if (formularioContato) {
 
 // Adicionar efeitos hover para cards
 document.querySelectorAll('.card-servico, .card-aplicacao, .card-testemunho').forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-10px) scale(1.02)';
     });
-    
-    card.addEventListener('mouseleave', function() {
+
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
@@ -336,12 +319,12 @@ window.addEventListener('scroll', () => {
 
 // Adicionar gerenciamento de foco para acessibilidade
 document.querySelectorAll('a, button, input, textarea').forEach(elemento => {
-    elemento.addEventListener('focus', function() {
+    elemento.addEventListener('focus', function () {
         this.style.outline = '2px solid #2563eb';
         this.style.outlineOffset = '2px';
     });
-    
-    elemento.addEventListener('blur', function() {
+
+    elemento.addEventListener('blur', function () {
         this.style.outline = 'none';
     });
 });
