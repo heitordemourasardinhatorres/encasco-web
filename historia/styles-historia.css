@@ -1,8 +1,45 @@
+/* Variáveis CSS */
+:root {
+    /* Cores principais */
+    --cor-primaria: #2563eb;
+    --cor-primaria-escura: #1d4ed8;
+    --cor-primaria-mais-escura: #1e40af;
+    
+    /* Cores de texto */
+    --texto-escuro: #1e293b;
+    --texto-base: #333;
+    --texto-medio: #64748b;
+    --texto-claro: #94a3b8;
+    
+    /* Cores de fundo */
+    --fundo-claro: #f8fafc;
+    --fundo-medio: #e2e8f0;
+    --fundo-branco: #ffffff;
+    
+    /* Cores de borda */
+    --borda-clara: #e2e8f0;
+    --borda-escura: #334155;
+    
+    /* Sombras */
+    --sombra-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --sombra-md: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --sombra-lg: 0 10px 25px rgba(37, 99, 235, 0.3);
+    
+    /* Transições */
+    --transicao-padrao: all 0.3s ease;
+    
+    /* Border Radius */
+    --borda-raio-sm: 6px;
+    --borda-raio-md: 12px;
+    --borda-raio-lg: 16px;
+    --borda-raio-circular: 50%;
+}
+
 /* Estilos para a página de História */
 .timeline-container {
     min-height: 100vh;
     padding: 80px 0;
-    background: #f8fafc;
+    background: var(--fundo-claro);
 }
     
 .historia-intro {
@@ -13,14 +50,14 @@
 }
 
 .historia-intro h1 {
-    color: #1e293b;
+    color: var(--texto-escuro);
     font-size: 3rem;
     margin-bottom: 1rem;
     animation: fadeInDown 1s ease;
 }
 
 .historia-intro p {
-    color: #64748b;
+    color: var(--texto-medio);
     font-size: 1.2rem;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease 0.3s forwards;
@@ -34,13 +71,13 @@
 }
 
 .scroll-indicator p {
-    color: #64748b;
+    color: var(--texto-medio);
     font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
 .scroll-indicator i {
-    color: #2563eb;
+    color: var(--cor-primaria);
     font-size: 1.5rem;
     animation: bounce 2s infinite;
 }
@@ -90,7 +127,7 @@
     content: '';
     position: absolute;
     width: 4px;
-    background: #2563eb;
+    background: var(--cor-primaria);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -104,7 +141,7 @@
     width: 50%;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.5s ease;
+    transition: var(--transicao-padrao);
 }
 
 .timeline-item.visivel {
@@ -122,9 +159,9 @@
 
 .timeline-content {
     padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    background: var(--fundo-branco);
+    border-radius: var(--borda-raio-md);
+    box-shadow: var(--sombra-md);
     position: relative;
 }
 
@@ -133,8 +170,8 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    background: #2563eb;
-    border-radius: 50%;
+    background: var(--cor-primaria);
+    border-radius: var(--borda-raio-circular);
     top: 50%;
     transform: translateY(-50%);
 }
@@ -148,18 +185,18 @@
 }
 
 .timeline-date {
-    color: #2563eb;
+    color: var(--cor-primaria);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .timeline-title {
-    color: #1e293b;
+    color: var(--texto-escuro);
     margin-bottom: 1rem;
 }
 
 .timeline-description {
-    color: #64748b;
+    color: var(--texto-medio);
     line-height: 1.6;
 }
 

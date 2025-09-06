@@ -1,3 +1,40 @@
+/* Variáveis CSS */
+:root {
+    /* Cores principais */
+    --cor-primaria: #2563eb;
+    --cor-primaria-escura: #1d4ed8;
+    --cor-primaria-mais-escura: #1e40af;
+    
+    /* Cores de texto */
+    --texto-escuro: #1e293b;
+    --texto-base: #333;
+    --texto-medio: #64748b;
+    --texto-claro: #94a3b8;
+    
+    /* Cores de fundo */
+    --fundo-claro: #f8fafc;
+    --fundo-medio: #e2e8f0;
+    --fundo-branco: #ffffff;
+    
+    /* Cores de borda */
+    --borda-clara: #e2e8f0;
+    --borda-escura: #334155;
+    
+    /* Sombras */
+    --sombra-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --sombra-md: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --sombra-lg: 0 10px 25px rgba(37, 99, 235, 0.3);
+    
+    /* Transições */
+    --transicao-padrao: all 0.3s ease;
+    
+    /* Border Radius */
+    --borda-raio-sm: 6px;
+    --borda-raio-md: 12px;
+    --borda-raio-lg: 16px;
+    --borda-raio-circular: 50%;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -12,7 +49,7 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--texto-base);
     overflow-x: hidden;
 }
 
@@ -49,41 +86,41 @@ h3 {
 
 p {
     margin-bottom: 1rem;
-    color: #666;
+    color: var(--texto-medio);
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
     padding: 12px 24px;
-    border-radius: 6px;
+    border-radius: var(--borda-raio-sm);
     text-decoration: none;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transicao-padrao);
     font-size: 1rem;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    color: white;
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
+    color: var(--fundo-branco);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    background: linear-gradient(135deg, var(--cor-primaria-escura), var(--cor-primaria-mais-escura));
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: var(--sombra-lg);
 }
 
 .btn-secondary {
     background: transparent;
-    color: #2563eb;
-    border: 2px solid #2563eb;
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
 }
 
 .btn-secondary:hover {
-    background: #2563eb;
-    color: white;
+    background: var(--cor-primaria);
+    color: var(--fundo-branco);
     transform: translateY(-2px);
 }
 
@@ -98,16 +135,15 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: var(--fundo-branco);
     z-index: 1000;
     padding: 0.5rem 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transicao-padrao);
+    box-shadow: var(--sombra-sm);
 }
 
 .header.rolado {
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--fundo-branco);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -145,14 +181,14 @@ p {
 
 .nav-link {
     text-decoration: none;
-    color: #333;
+    color: var(--texto-base);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: var(--transicao-padrao);
     position: relative;
 }
 
 .nav-link:hover {
-    color: #2563eb;
+    color: var(--cor-primaria);
 }
 
 .nav-link::after {
@@ -162,7 +198,7 @@ p {
     left: 0;
     width: 0;
     height: 2px;
-    background: #2563eb;
+    background: var(--cor-primaria);
     transition: width 0.3s ease;
 }
 
@@ -318,13 +354,16 @@ p {
 .item-valor {
     text-align: center;
     padding: 2rem;
-    background: #f8fafc;
+    background: var(--fundo-branco);
     border-radius: 12px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .item-valor:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+    border-color: rgba(37, 99, 235, 0.2);
 }
 
 .item-valor i {
