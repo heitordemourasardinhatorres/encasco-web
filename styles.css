@@ -288,6 +288,24 @@ p {
     margin-bottom: 2rem;
 }
 
+.historia-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.historia-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
 .valores {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
