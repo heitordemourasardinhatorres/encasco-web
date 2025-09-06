@@ -246,11 +246,12 @@ p {
     align-items: center;
     position: relative;
     z-index: 1;
+    margin-top: 6rem;
 }
 
 .hero-text h1 {
     color: #1e293b;
-    margin-bottom: 1.5rem;
+    margin: 0 0 1.5rem 0;
     animation: fadeInUp 1s ease;
 }
 
