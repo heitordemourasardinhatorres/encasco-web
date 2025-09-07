@@ -39,6 +39,24 @@
     --altura-header-mobile: 300px;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fundo-medio);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--cor-primaria);
+    border-radius: 5px 5px 5px 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cor-primaria-mais-escura);
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -129,7 +147,7 @@ p {
 }
 
 .btn-large {
-    padding: 16px 32px;
+    padding: 16px 100px;
     font-size: 1.1rem;
 }
 
@@ -220,7 +238,7 @@ p {
 /* Hero Section */
 .hero {
     padding-bottom: 80px;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: linear-gradient(135deg, var(--fundo-claro) 0%, var(--fundo-medio) 100%);
     position: relative;
     overflow: hidden;
     min-height: 100vh;
@@ -246,18 +264,18 @@ p {
     align-items: center;
     position: relative;
     z-index: 1;
-    margin-top: 6rem;
+    margin-top: 7rem;
 }
 
 .hero-text h1 {
-    color: #1e293b;
+    color: var(--texto-escuro);
     margin: 0 0 1.5rem 0;
     animation: fadeInUp 1s ease;
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
-    color: #64748b;
+    color: var(--texto-medio);
     margin-bottom: 1.5rem;
     animation: fadeInUp 1s ease 0.2s both;
 }
@@ -278,30 +296,30 @@ p {
     width: 100%;
 }
 
-.video-oval {
+.video-introd {
     width: 320px;
     height: 480px;
     scale: 1.1;
     max-width: 100%;
     max-height: 70vh;
     object-fit: cover;
-    box-shadow: -10px 0 60px 12px rgba(37, 99, 235, 0.3);
-    border-radius: 16px;
-    background: #222;
+    box-shadow: -10px 0 60px 12px var(--cor-primaria);
+    border-radius: var(--borda-raio-lg);
+    background: var(--texto-escuro);
     display: block;
     margin: 0 auto;
-    transition: all 0.3s ease;
+    transition: var(--transicao-padrao);
 }
 
-.video-oval:hover {
-    box-shadow: -10px 0 60px 12px rgba(37, 99, 235, 0.5);
+.video-introd:hover {
+    box-shadow: -10px 0 60px 12px var(--cor-primaria);
     scale: 1.11;
 }
 
 /* About Section */
 .about {
     padding: 80px 0;
-    background: white;
+    background: var(--fundo-branco);
 }
 
 .section-header {
@@ -310,13 +328,13 @@ p {
 }
 
 .section-header h2 {
-    color: #1e293b;
+    color: var(--texto-escuro);
     margin-bottom: 1rem;
 }
 
 .section-header p {
     font-size: 1.1rem;
-    color: #64748b;
+    color: var(--texto-medio);
 }
 
 .about-content {
@@ -335,19 +353,19 @@ p {
 .historia-btn {
     display: inline-block;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    color: white;
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
+    color: var(--fundo-branco);
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: var(--borda-raio-sm);
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: var(--transicao-padrao);
     margin-bottom: 2rem;
     text-align: center;
 }
 
 .historia-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: var(--sombra-lg);
 }
 
 .valores {
@@ -364,19 +382,19 @@ p {
     padding: 2rem;
     background: var(--fundo-branco);
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: var(--transicao-padrao);
 }
 
 .item-valor:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
-    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
-    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: var(--sombra-lg);
+    background: linear-gradient(to bottom, var(--fundo-claro), var(--fundo-medio));
+    border-color: var(--cor-primaria);
 }
 
 .item-valor i {
     font-size: 2.5rem;
-    color: #2563eb;
+    color: var(--cor-primaria);
     margin-bottom: 1rem;
 }
 
@@ -388,7 +406,7 @@ p {
 .imagem-sobre {
     display: flex;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: var(--transicao-padrao);
 }
 
 .imagem-sobre:hover {
@@ -396,10 +414,10 @@ p {
 }
 
 .visual-sobre {
-    width: 370px;
+    width: 500px;
     height: 370px;
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    border-radius: 50%;
+    border-radius: 23px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -410,7 +428,7 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 23px;
     transition: all 2s ease;
 }
 
@@ -429,6 +447,11 @@ p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.servicos-cta {
+    text-align: center;
     margin-bottom: 4rem;
 }
 
@@ -438,7 +461,7 @@ p {
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: var(--transicao-padrao);
     overflow: hidden;
 }
 
@@ -453,7 +476,7 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: var(--transicao-padrao);
 }
 
 .card-servico:hover .imagem-servico img {
@@ -652,8 +675,56 @@ p {
 }
 
 .item-contato p {
-    color: #64748b;
+    color: var(--texto-medio);
     line-height: 1.6;
+}
+
+.whatsapp-button {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    padding: 0.75rem 1.125rem;
+    border-radius: var(--borda-raio-md);
+    transition: var(--transicao-padrao);
+    box-shadow: var(--sombra-sm);
+    width: 300px;
+}
+
+.whatsapp-button:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-md);
+}
+
+.whatsapp-button i {
+    font-size: 1.65rem;
+    color: inherit;
+    margin: 0;
+}
+
+.whatsapp-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.whatsapp-button span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.whatsapp-button small {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    line-height: 1;
 }
 
 /* Footer */
@@ -1203,7 +1274,7 @@ p {
     }
 
     .visual-sobre {
-        width: 220px;
+        width: 400px;
         height: 220px;
     }
 
@@ -1229,7 +1300,7 @@ p {
     }
 
     .visual-sobre {
-        width: 140px;
+        width: 300px;
         height: 140px;
     }
 
