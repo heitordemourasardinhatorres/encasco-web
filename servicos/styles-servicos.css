@@ -44,8 +44,6 @@
     min-height: 800px;
     transform: scale(1.02);
     transition: all 0.6s ease;
-    margin-bottom: 2rem;
-    /* ajuste para espaçamento */
 }
 
 .card-servico-detalhado:focus .card-frente,
@@ -261,104 +259,113 @@
 }
 
 
-@media (max-width: 480px) {
+
+
+
+
+/* ----- Melhorias de responsividade para cards (aplicadas em <=768px) ----- */
+@media (max-width: 1024px) {
+
+    /* Garantir grid responsivo */
     .servicos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
         position: relative;
-        isolation: isolate;
     }
 
+    /* Tamanho do card padronizado para o flip preview (hover) */
     .card-servico-detalhado {
-        height: 350px;
         width: 100%;
         max-width: calc(100vw - 2rem);
+        height: 360px;
+        margin: 0 auto 1rem;
+        overflow: hidden;
+        /* evita que a face de trás vaze e sobreponha outros cards */
         position: relative;
-        margin-bottom: 1rem;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        perspective: 1000px;
+        transition: transform 0.45s ease;
     }
 
-    /* Hover: apenas virar, sem sobrepor nem expandir */
-    .card-servico-detalhado:hover {
-        z-index: auto !important;
+    /* Faces continuam posicionadas absolute para o efeito 3D, mas ficam confinadas pelo overflow:hidden */
+    .card-frente,
+    .card-costas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.45s ease;
+        transform-style: preserve-3d;
     }
 
-    .card-servico-detalhado:hover .card-frente {
-        transform: rotateY(-180deg) !important;
-    }
+    /* Preview ao hover: apenas gira dentro do espaço do card (não expande e não sobrepõe) */
 
     .card-servico-detalhado:hover .card-costas {
-        transform: rotateY(0) !important;
-        position: relative !important;
-        height: 100% !important;
-        min-height: 100% !important;
-        overflow: hidden !important;
-        display: flex !important;
-        flex-direction: column;
-        padding: 1rem;
+        transform: rotateY(0);
     }
 
-    /* Focus: expande e empurra os outros cards */
+    /* Manter z-index baixo para não sobrepor; o overflow:hidden garante contenção */
+    .card-servico-detalhado:hover {
+        z-index: 1;
+    }
+
+    /* Quando o usuário foca (tap/keyboard) o card deve expandir no fluxo e exibir todo conteúdo */
     .card-servico-detalhado:focus {
-        position: relative !important;
-        z-index: auto !important;
-        height: auto !important;
-        min-height: 0 !important;
-        margin-bottom: 1.5rem !important;
-        transform: none !important;
-        width: 100% !important;
+        position: relative;
+        overflow: visible;
+        height: auto;
+        min-height: 200px;
+        margin-bottom: 1.75rem;
+        transform: none;
+        z-index: 2;
     }
 
+    /* No estado focus, esconder a face frontal e tornar a costas position:static para entrar no fluxo */
     .card-servico-detalhado:focus .card-frente {
-        display: none !important;
-        transform: none !important;
-        position: static !important;
+        display: none;
     }
 
     .card-servico-detalhado:focus .card-costas {
-        position: static !important;
+        position: static;
         transform: none !important;
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        box-shadow: none !important;
-        overflow: visible !important;
-        padding: 1rem !important;
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 1.25rem;
+        box-shadow: none;
+    }
+
+    /* Ajustes internos da costas para leitura linear (antes era grid de 2 colunas em desktop) */
+    .card-servico-detalhado:focus .card-costas {
+        display: block;
     }
 
     .card-servico-detalhado:focus .detalhes-servico {
-        display: block !important;
+        display: flex gap: 1rem;
     }
 
-    .secao-detalhes {
-        padding: 0.8rem;
-    }
-
-    .secao-detalhes h4 {
-        font-size: 1rem;
-    }
-
-    .secao-detalhes li {
-        font-size: 0.9rem;
-    }
-
+    /* Ajustes de imagens para evitar overflow estranho */
     .servico-img {
-        height: 160px;
+        height: 180px;
+        object-fit: cover;
     }
 
     .card-servico-detalhado:focus .servico-img {
-        height: 200px;
+        height: 220px;
     }
 
-    .card-servico-detalhado:focus .secao-detalhes {
-        padding: 0.75rem;
+    /* Pequenos ajustes tipográficos para telas menores */
+    .card-frente h3,
+    .card-servico-detalhado:focus h3 {
+        font-size: 1.2rem;
     }
 
-    .card-servico-detalhado:focus .secao-detalhes h4 {
+    .card-servico-detalhado:focus .texto-servico {
         font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .card-servico-detalhado:focus .secao-detalhes li {
-        font-size: 0.85rem;
-        padding-left: 1rem;
+        line-height: 1.5;
     }
 }

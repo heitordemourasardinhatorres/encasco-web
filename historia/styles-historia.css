@@ -4,30 +4,30 @@
     --cor-primaria: #2563eb;
     --cor-primaria-escura: #1d4ed8;
     --cor-primaria-mais-escura: #1e40af;
-    
+
     /* Cores de texto */
     --texto-escuro: #1e293b;
     --texto-base: #333;
     --texto-medio: #64748b;
     --texto-claro: #94a3b8;
-    
+
     /* Cores de fundo */
     --fundo-claro: #f8fafc;
     --fundo-medio: #e2e8f0;
     --fundo-branco: #ffffff;
-    
+
     /* Cores de borda */
     --borda-clara: #e2e8f0;
     --borda-escura: #334155;
-    
+
     /* Sombras */
     --sombra-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
     --sombra-md: 0 5px 15px rgba(0, 0, 0, 0.08);
     --sombra-lg: 0 10px 25px rgba(37, 99, 235, 0.3);
-    
+
     /* Transições */
     --transicao-padrao: all 0.3s ease;
-    
+
     /* Border Radius */
     --borda-raio-sm: 6px;
     --borda-raio-md: 12px;
@@ -41,7 +41,7 @@
     padding: 80px 0;
     background: var(--fundo-claro);
 }
-    
+
 .historia-intro {
     text-align: center;
     padding: 60px 20px;
@@ -83,12 +83,19 @@
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-20px);
     }
+
     60% {
         transform: translateY(-10px);
     }
@@ -99,6 +106,7 @@
         opacity: 0;
         transform: translateY(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -106,11 +114,16 @@
 }
 
 /* Ajuste responsivo para a introdução */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+
+    .historia-intro {
+        padding: 80px 0 0 0;
+    }
+
     .historia-intro h1 {
         font-size: 2.2rem;
     }
-    
+
     .historia-intro p {
         font-size: 1.1rem;
     }
@@ -224,25 +237,25 @@
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .timeline::after {
         left: 31px;
     }
-    
+
     .timeline-item {
         width: 100%;
         padding-left: 80px;
         padding-right: 0;
     }
-    
+
     .timeline-item:nth-child(even) {
         left: 0;
     }
-    
+
     .timeline-content::after {
         left: -39px !important;
     }
-    
+
     .timeline-content::before {
         left: -10px !important;
         border-width: 10px 10px 10px 0 !important;
