@@ -345,7 +345,8 @@
     }
 
     .card-servico-detalhado:focus .detalhes-servico {
-        display: flex gap: 1rem;
+        display: flex;
+        gap: 1rem;
     }
 
     /* Ajustes de imagens para evitar overflow estranho */
