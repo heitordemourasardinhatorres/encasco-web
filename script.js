@@ -330,3 +330,259 @@ document.querySelectorAll('a, button, input, textarea').forEach(elemento => {
 });
 
 console.log('Website da Encasco carregado com sucesso! 🚀');
+
+//*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+
+// ===== CARROSSEL DE IMAGENS - SEÇÃO SOBRE =====
+
+class CarrosselImagens {
+    constructor() {
+        this.slideAtual = 0;
+        this.slides = document.querySelectorAll('.slide');
+        this.indicadores = document.querySelectorAll('.indicador');
+        this.totalSlides = this.slides.length;
+        this.autoplayAtivo = true;
+        this.intervalId = null;
+        this.tempoAutoplay = 5000; // 5 segundos
+
+        // Verificar se o carrossel existe na página
+        if (this.slides.length > 0) {
+            this.iniciarAutoplay();
+            this.adicionarEventListeners();
+        }
+    }
+
+    iniciarAutoplay() {
+        if (this.autoplayAtivo && this.totalSlides > 1) {
+            this.intervalId = setInterval(() => {
+                this.proximoSlide();
+            }, this.tempoAutoplay);
+        }
+    }
+
+    pararAutoplay() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+        }
+    }
+
+    toggleAutoplay() {
+        const botaoStatus = document.querySelector('.status-carrossel i');
+
+        if (!botaoStatus) return;
+
+        if (this.autoplayAtivo) {
+            this.pararAutoplay();
+            this.autoplayAtivo = false;
+            botaoStatus.className = 'fas fa-play';
+        } else {
+            this.autoplayAtivo = true;
+            this.iniciarAutoplay();
+            botaoStatus.className = 'fas fa-pause';
+        }
+    }
+
+    atualizarSlide() {
+        // Remover classes ativas
+        this.slides.forEach((slide, index) => {
+            slide.classList.remove('ativo', 'saindo');
+            if (index === this.slideAtual) {
+                slide.classList.add('ativo');
+            }
+        });
+
+        // Atualizar indicadores
+        this.indicadores.forEach((indicador, index) => {
+            indicador.classList.toggle('ativo', index === this.slideAtual);
+        });
+    }
+
+    irParaSlide(indice) {
+        if (indice !== this.slideAtual && indice >= 0 && indice < this.totalSlides) {
+            this.slides[this.slideAtual].classList.add('saindo');
+            this.slideAtual = indice;
+
+            setTimeout(() => {
+                this.atualizarSlide();
+            }, 100);
+        }
+    }
+
+    proximoSlide() {
+        const proximoIndice = (this.slideAtual + 1) % this.totalSlides;
+        this.irParaSlide(proximoIndice);
+    }
+
+    slideAnterior() {
+        const indiceAnterior = (this.slideAtual - 1 + this.totalSlides) % this.totalSlides;
+        this.irParaSlide(indiceAnterior);
+    }
+
+    adicionarEventListeners() {
+        const container = document.querySelector('.carrossel-container');
+
+        if (!container) return;
+
+        // Pausar autoplay no hover
+        container.addEventListener('mouseenter', () => {
+            if (this.autoplayAtivo) {
+                this.pararAutoplay();
+            }
+        });
+
+        // Retomar autoplay ao sair do hover
+        container.addEventListener('mouseleave', () => {
+            if (this.autoplayAtivo) {
+                this.iniciarAutoplay();
+            }
+        });
+
+        // Suporte para touch/swipe em dispositivos móveis
+        let startX = 0;
+        let endX = 0;
+
+        container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        container.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            this.handleSwipe();
+        });
+
+        // Suporte para teclado (apenas quando o carrossel está em foco)
+        container.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    this.slideAnterior();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    this.proximoSlide();
+                    break;
+                case ' ': // Espaço
+                    e.preventDefault();
+                    this.toggleAutoplay();
+                    break;
+            }
+        });
+
+        // Tornar o container focalizável
+        container.setAttribute('tabindex', '0');
+    }
+
+    handleSwipe() {
+        const diferenca = startX - endX;
+        const minimoSwipe = 50;
+
+        if (Math.abs(diferenca) > minimoSwipe) {
+            if (diferenca > 0) {
+                // Swipe para esquerda - próximo slide
+                this.proximoSlide();
+            } else {
+                // Swipe para direita - slide anterior
+                this.slideAnterior();
+            }
+        }
+    }
+
+    // Método para destruir o carrossel (limpeza)
+    destruir() {
+        this.pararAutoplay();
+        const container = document.querySelector('.carrossel-container');
+        if (container) {
+            container.removeEventListener('mouseenter', () => { });
+            container.removeEventListener('mouseleave', () => { });
+            container.removeEventListener('touchstart', () => { });
+            container.removeEventListener('touchend', () => { });
+            container.removeEventListener('keydown', () => { });
+        }
+    }
+}
+
+// Variável global para o carrossel
+let carrosselSobre = null;
+
+// Funções globais para os controles
+function mudarSlide(direcao) {
+    if (carrosselSobre) {
+        if (direcao === 1) {
+            carrosselSobre.proximoSlide();
+        } else {
+            carrosselSobre.slideAnterior();
+        }
+    }
+}
+
+function irParaSlide(indice) {
+    if (carrosselSobre) {
+        carrosselSobre.irParaSlide(indice);
+    }
+}
+
+function toggleAutoplay() {
+    if (carrosselSobre) {
+        carrosselSobre.toggleAutoplay();
+    }
+}
+
+// Integrar com o sistema de carregamento preguiçoso existente
+function carregarImagensCarrossel() {
+    const imagensCarrossel = document.querySelectorAll('.slide img[data-src]');
+
+    const observadorImagemCarrossel = new IntersectionObserver((entradas, observador) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                const img = entrada.target;
+
+                // Adicionar classe de carregamento
+                img.classList.add('carregando');
+
+                // Carregar a imagem
+                img.src = img.dataset.src;
+
+                // Adicionar evento para quando a imagem carregar
+                img.addEventListener('load', () => {
+                    img.classList.remove('carregando');
+                    img.classList.add('carregada');
+                });
+
+                // Adicionar evento para erro de carregamento
+                img.addEventListener('error', () => {
+                    img.style.display = 'none';
+                    console.warn('Erro ao carregar imagem do carrossel:', img.dataset.src);
+                });
+
+                observadorImagemCarrossel.unobserve(img);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '50px 0px'
+    });
+
+    imagensCarrossel.forEach(img => observadorImagemCarrossel.observe(img));
+}
+
+// Inicialização do carrossel após o DOM ser carregado
+document.addEventListener('DOMContentLoaded', () => {
+    // Aguardar um pequeno delay para garantir que todos os elementos estejam prontos
+    setTimeout(() => {
+        const containerCarrossel = document.querySelector('.carrossel-container');
+        if (containerCarrossel) {
+            carrosselSobre = new CarrosselImagens();
+            carregarImagensCarrossel();
+            console.log('Carrossel da seção Sobre inicializado com sucesso! 🎠');
+        }
+    }, 100);
+});
+
+// Limpeza ao sair da página
+window.addEventListener('beforeunload', () => {
+    if (carrosselSobre) {
+        carrosselSobre.destruir();
+    }
+});
