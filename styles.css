@@ -603,7 +603,7 @@ p {
      Services
      ========================== */
 .services {
-    padding: 120px 0 0 0;
+    padding: 0 0 0 0;
     background: var(--fundo-claro);
 }
 
