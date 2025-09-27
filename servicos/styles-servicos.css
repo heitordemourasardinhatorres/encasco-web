@@ -308,6 +308,11 @@
 
 /* Responsividade - Mobile e Tablet */
 @media (max-width: 1024px) {
+
+    .servicos-detalhados {
+        padding: 200px 0 0 0;
+    }
+
     .servicos-grid {
         grid-template-columns: 1fr;
         gap: 1.25rem;
@@ -317,7 +322,7 @@
     .card-servico-detalhado {
         width: 100%;
         max-width: calc(100vw - 2rem);
-        height: 360px;
+        min-height: 600px;
         margin: 0 auto 1rem;
         z-index: 1;
         position: relative;
@@ -353,7 +358,7 @@
     }
 
     .card-servico-detalhado:focus h3 {
-        font-size: 1.2rem;
+        font-size: 2rem;
         grid-column: auto;
         margin-bottom: 1rem;
     }
@@ -364,41 +369,5 @@
 
     .card-servico-detalhado:focus .servico-img {
         height: 220px;
-    }
-}
-
-@media (max-width: 768px) {
-    .servicos-detalhados {
-        margin-top: 15rem;
-        padding: 60px 0;
-    }
-
-    .card-servico-detalhado {
-        height: 450px;
-        z-index: 1;
-    }
-
-    .card-servico-detalhado:focus {
-        transform: none;
-        z-index: 10;
-        margin-bottom: 2.5rem;
-    }
-
-    .servico-img {
-        height: 160px;
-    }
-
-    .card-servico-detalhado:focus .servico-img {
-        height: 200px;
-    }
-
-    .card-servico-detalhado:focus .card-costas {
-        padding: 1rem;
-        z-index: 15;
-    }
-
-    .card-servico-detalhado:focus .texto-servico {
-        font-size: 0.95rem;
-        line-height: 1.5;
     }
 }

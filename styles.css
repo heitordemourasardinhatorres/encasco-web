@@ -100,6 +100,7 @@ h6 {
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
 }
 
 h1 {
@@ -118,6 +119,7 @@ h3 {
 p {
     margin-bottom: 1rem;
     color: var(--texto-medio);
+    font-family: 'Inter', sans-serif;
 }
 
 /* ==========================
@@ -278,7 +280,7 @@ p {
     align-items: center;
     position: relative;
     z-index: 1;
-    margin-top: 11rem;
+    margin: 120px auto;
 }
 
 .hero-text h1 {
@@ -315,14 +317,11 @@ p {
     width: 320px;
     height: 480px;
     transform: scale(1.1);
-    max-width: 100%;
-    max-height: 70vh;
     object-fit: cover;
     box-shadow: -10px 0 60px 12px var(--cor-primaria);
     border-radius: var(--borda-raio-lg);
     background: var(--texto-escuro);
-    display: block;
-    margin: 0 auto 200px;
+    margin: auto;
     transition: var(--transicao-padrao);
 }
 
@@ -336,8 +335,7 @@ p {
      ========================== */
 .about {
     background: var(--fundo-branco);
-    padding: 200px 0 0 0;
-    margin: -200px 0 0 0;
+    padding: 120px 0 0 0;
 }
 
 .section-header {
@@ -603,7 +601,7 @@ p {
      Services
      ========================== */
 .services {
-    padding: 0 0 0 0;
+    padding: 110px 0 0 0;
     background: var(--fundo-claro);
 }
 
@@ -1158,9 +1156,7 @@ p {
 
     /* Hero */
     .hero {
-        margin: 100px 0 -200px 0;
-        padding: 100px 0 0 0;
-        min-height: calc(100vh + 80px);
+       padding: 150px 0 0 0;
     }
 
     .hero-content {
@@ -1185,7 +1181,11 @@ p {
     /* About / Services / Testimonials / Contact spacing adjustments */
 
     .about {
-        margin: -500px 0 0 0;
+        padding: 200px 0 0 0;
+    }
+
+    .services {
+        padding: 10px 0 0 0;
     }
 
     .about-content {

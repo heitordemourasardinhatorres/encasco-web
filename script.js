@@ -1,5 +1,3 @@
-
-
 // Efeito de scroll no cabeçalho
 const cabecalho = document.querySelector('.header');
 window.addEventListener('scroll', () => {
@@ -193,17 +191,6 @@ estilo.textContent = `
 `;
 document.head.appendChild(estilo);
 
-
-
-// Efeito parallax para seção hero
-window.addEventListener('scroll', () => {
-    const scrollado = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const taxa = scrollado * -0.5;
-        hero.style.transform = `translateY(${taxa}px)`;
-    }
-});
 
 // Animação de contador para estatísticas (se necessário)
 function animarContador(elemento, alvo, duracao = 2000) {
