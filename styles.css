@@ -1156,7 +1156,7 @@ p {
 
     /* Hero */
     .hero {
-       padding: 150px 0 0 0;
+        padding: 150px 0 0 0;
     }
 
     .hero-content {
@@ -1323,35 +1323,5 @@ p {
     .secao-rodape p,
     .secao-rodape li {
         font-size: 0.95rem;
-    }
-
-    /* Accessibility / Focus for detailed cards */
-    .card-servico-detalhado:focus {
-        position: relative !important;
-        z-index: auto !important;
-        height: auto !important;
-        min-height: 0 !important;
-        margin-bottom: 1.5rem !important;
-        transform: none !important;
-        width: 100% !important;
-    }
-
-    .card-servico-detalhado:hover {
-        z-index: auto !important;
-    }
-
-    .card-servico-detalhado:hover .card-frente {
-        transform: rotateY(-180deg) !important;
-    }
-
-    .card-servico-detalhado:hover .card-costas {
-        transform: rotateY(0) !important;
-        position: relative !important;
-        height: 100% !important;
-        min-height: 100% !important;
-        overflow: hidden !important;
-        display: flex !important;
-        flex-direction: column;
-        padding: 1rem;
     }
 }
