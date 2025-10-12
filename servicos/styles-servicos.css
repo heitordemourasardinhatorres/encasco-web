@@ -272,34 +272,12 @@
     left: 0;
 }
 
-.secao-detalhes.custo {
-    text-align: center;
-    background: var(--cor-primaria);
-    color: var(--fundo-branco);
-    height: min-content;
-    min-height: min-content;
-}
-
-.secao-detalhes.custo h4 {
-    color: var(--fundo-branco);
-    height: min-content;
-    min-height: min-content;
-}
-
-.secao-detalhes.custo p {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0.5rem 0;
-    color: var(--fundo-branco);
-    height: min-content;
-    min-height: min-content;
-}
-
-.secao-detalhes.custo small {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    height: min-content;
-    min-height: min-content;
+.secao-detalhes img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--borda-raio-sm);
+    margin-top: 1rem;
 }
 
 /* ==========================
