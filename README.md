@@ -250,4 +250,4 @@ class CarrosselImagens {
 
 **© 2025 Encasco - Todos os direitos reservados.**
 
-*Desenvolvido com ❤️ por Heitor de Moura*
+*Desenvolvido por Heitor de Moura Sardinha Torres (@heitormst)*
