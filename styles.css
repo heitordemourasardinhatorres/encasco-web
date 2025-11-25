@@ -365,25 +365,6 @@ p {
     margin: 0 5rem 2rem 5rem
 }
 
-.historia-btn {
-    display: block;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
-    color: var(--fundo-branco);
-    text-decoration: none;
-    border-radius: var(--borda-raio-sm);
-    font-weight: 500;
-    transition: var(--transicao-padrao);
-    margin: 2rem auto;
-    text-align: center;
-    width: fit-content;
-}
-
-.historia-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--sombra-lg);
-}
-
 .valores {
     display: grid;
     grid-column: 1 / -1;
